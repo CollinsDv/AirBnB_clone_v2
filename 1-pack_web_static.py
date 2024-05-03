@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 # module: 1-pack_web_static
 # Write a Fabric script that generates a .tgz archive from contents of
 # the web_static folder of your AirBnB Clone repo, using the function do_pack.
@@ -14,7 +14,7 @@ from fabric.api import local
 from datetime import datetime
 import os
 
-def do_pack(c):
+def do_pack():
     """Generate a tar.gz file from the web_static folder.
 
     Returns:
