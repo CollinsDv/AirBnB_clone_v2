@@ -14,6 +14,7 @@ from fabric.api import local
 from datetime import datetime
 import os
 
+
 def do_pack():
     """Generate a tar.gz file from the web_static folder.
 
@@ -23,7 +24,8 @@ def do_pack():
     time = datetime.now()
     archive_name = f"web_static_{time.strftime('%Y%m%d%H%M%S')}.tgz"
     local("mkdir -p versions")
-    result = local("tar -czvf versions/{} web_static".format(archive_name), capture=True)
+    result = local("tar -czvf versions/{} web_static".format(
+        archive_name), capture=True)
     if result.failed:
         return None
     return os.path.abspath(f"versions/{archive_name}")
