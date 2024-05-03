@@ -1,23 +1,28 @@
 #!/usr/bin/env bash
 # script that sets up your web servers for the deployment of web_static
+# install nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
+# file existence check
+if [ ! -d /data/web_static/releases/ ]; then
+        sudo mkdir -p /data/web_static/releases/test/
+fi
 
-if ! command -v nginx &> /dev/null
-then
-    sudo apt-get -y update
-    sudo apt-get -y install nginx
-echo "<!DOCTYPE html>
+if [ ! -d /data/web_static/shared/ ]; then
+        sudo mkdir -p /data/web_static/shared/
+fi
+# test file
+echo "<!DOCTYPE>
 <html>
-<head>
-  <title>Test Page</title>
-</head>
-<body>
-  <h1>This is a test page</h1>
-  <p>Hello, world!</p>
-</body>
+  <head>
+  </head>
+  <body>
+    Holberton School
+  </body>
 </html>" | sudo tee /data/web_static/releases/test/index.html >/dev/null
 target="/data/web_static/releases/test"
 link="/data/web_static/current"
-if [ -L "$link"]; then
+if [ -L "$link" ]; then
     sudo rm "$link"
 fi
 sudo ln -s "$target" "$link"
@@ -44,6 +49,6 @@ printf %s "server {
     location = /404.html{
         internal;
     }
-}" > /etc/nginx/sites_available/default
+}" | sudo tee /etc/nginx/sites-available/default
 
-service nginx restart
+sudo service nginx restart
