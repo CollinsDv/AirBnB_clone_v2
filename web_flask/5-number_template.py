@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-module: 1-hbnb_route
+module: 5-number_template
 """
 from flask import Flask, render_template
 from markupsafe import escape
