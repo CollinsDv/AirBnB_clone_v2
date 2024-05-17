@@ -7,6 +7,7 @@ from flask import Flask
 # instanciate a Flask instance with module name
 app = Flask(__name__)
 
+
 # decorator to register view function to URL rulw
 @app.route('/', strict_slashes=False)
 def hello():
