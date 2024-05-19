@@ -6,7 +6,6 @@ from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 
 
-
 class State(BaseModel, Base):
     """ State class """
     __tablename__ = 'states'
@@ -18,7 +17,7 @@ class State(BaseModel, Base):
     def cities(self):
         from models import storage
         import shlex
-        
+
         var = storage.all()
         lista = []
         result = []
