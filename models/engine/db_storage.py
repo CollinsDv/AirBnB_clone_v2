@@ -89,7 +89,7 @@ class DBStorage():
         Base.metadata.create_all(bind=self.__engine)
         ssion = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(ssion)
-        self.__session = Session()
+        self.__session = Session
 
     @property
     def _FileStorage__objects(self):
