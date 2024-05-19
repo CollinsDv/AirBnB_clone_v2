@@ -3,7 +3,7 @@
 Console Module """
 import cmd
 import sys
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 from models.__init__ import storage
 from models.user import User
 from models.place import Place
@@ -95,6 +95,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, command):
         """ Method to exit the HBNB console"""
+        Base.metadata.create_all(storage._DBStorage__engine)
         exit()
 
     def help_quit(self):
