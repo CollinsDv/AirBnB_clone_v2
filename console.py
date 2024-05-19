@@ -95,7 +95,6 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, command):
         """ Method to exit the HBNB console"""
-        Base.metadata.create_all(storage._DBStorage__engine)
         exit()
 
     def help_quit(self):
@@ -355,4 +354,5 @@ class HBNBCommand(cmd.Cmd):
 
 
 if __name__ == "__main__":
+    Base.metadata.create_all(storage._DBStorage__engine)
     HBNBCommand().cmdloop()
