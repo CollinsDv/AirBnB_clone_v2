@@ -98,3 +98,9 @@ class DBStorage():
         in the format of _FileStorage__objects
         """
         return self.all()
+
+    def close(self):
+        """permanently removes a scoped_session from registry thus removing
+        all connections and returning them to their pool
+        """
+        self.__session.remove()
